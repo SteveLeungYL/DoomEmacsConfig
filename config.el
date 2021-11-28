@@ -57,42 +57,30 @@
 ;; they are implemented.
 
 ;; Python conda env setup
-(require 'conda)
+;; (require 'conda)
 ;; if you want interactive shell support, include:
-(conda-env-initialize-interactive-shells)
+;; (conda-env-initialize-interactive-shells)
 ;; if you want eshell support, include:
-(conda-env-initialize-eshell)
+;; (conda-env-initialize-eshell)
 ;; if you want auto-activation (see below for details), include:
-(setq-default conda-env-autoactivate-mode t)
-(setq conda-anaconda-home (expand-file-name "/Users/sly/opt/anaconda3"))
-(setq conda-env-home-directory (expand-file-name "/Users/sly/opt/anaconda3"))
+;; (setq-default conda-env-autoactivate-mode t)
+;; (setq conda-anaconda-home (expand-file-name "/Users/sly/opt/anaconda3"))
+;; (setq conda-env-home-directory (expand-file-name "/Users/sly/opt/anaconda3"))
 
 ;;;; Set up the C/C++ language server
- (setq lsp-clients-clangd-args '("-j=3"
-                                 "--background-index"
-                                 "--clang-tidy"
-                                 "--completion-style=detailed"
-                                 "--header-insertion=never"
-                                 "--header-insertion-decorators=0"))
-(after! lsp-clangd (set-lsp-priority! 'clangd 2))
+;; (setq lsp-clients-clangd-args '("-j=3"
+;;                                 "--background-index"
+;;                                 "--clang-tidy"
+;;                                 "--completion-style=detailed"
+;;                                 "--header-insertion=never"
+;;                                 "--header-insertion-decorators=0"))
+;;(after! lsp-clangd (set-lsp-priority! 'clangd 2))
 
 
 
 ;; (after! ccls
 ;;   (setq ccls-initialization-options '(:index (:comments 2) :completion (:detailedLabel t)))
 ;;   (set-lsp-priority! 'ccls 2)) ; optional as ccls is the default in Doom
-
-
-;; (after! lsp-mode
-;;   :hook ((prog-mode . lsp-deferred))
-;;   :commands (lsp lsp-deferred)
-;;   :config
-;;   (progn
-;;     (lsp-register-client
-;;      (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
-;;                       :major-modes '(c-mode c++-mode)
-;;                       :remote? t
-;;                       :server-id 'clangd-remote))))
 
 ;; (require 'lsp-mode)
 ;;  (lsp-register-client
@@ -102,12 +90,19 @@
 ;;                       :priority 2
 ;;                       :server-id 'clangd-remote))
 
-(setq lsp-log-io t)
+;; (setq lsp-log-io t)
 
 (setq lsp-headerline-breadcrumb-enable t)
 (setq lsp-ui-doc-enable nil)
 
-(setq toggle-debug-on-quit t)
+;; (setq toggle-debug-on-quit t)
+
+;; (setq debug-on-error t)
 
 ;; (set-eglot-client! 'cc-mode '("clangd" "-j=3" "--clang-tidy"))
 ;; (set-eglot-client! 'cc-mode '("ccls" "--init={\"index\": {\"threads\": 3}}"))
+
+(setq auto-save-mode nil)
+
+;; enable word-wrap (almost) everywhere
+(+global-word-wrap-mode +1)
