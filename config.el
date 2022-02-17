@@ -19,8 +19,8 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "SF MONO" :size 14 :weight 'Regular)
-       doom-variable-pitch-font (font-spec :family "SF MONO" :size 14))
+(setq doom-font (font-spec :family "SF MONO" :size 16 :weight 'Regular)
+       doom-variable-pitch-font (font-spec :family "SF MONO" :size 16))
 
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
@@ -106,3 +106,16 @@
 
 ;; enable word-wrap (almost) everywhere
 (+global-word-wrap-mode +1)
+
+
+;; (setq lsp-clients-clangd-args '("-j=3"
+;;                                 "--background-index"
+;;                                 "--clang-tidy"
+;;                                 "--completion-style=detailed"
+;;                                 "--header-insertion=never"
+;;                                 "--header-insertion-decorators=0"))
+;; (after! lsp-clangd (set-lsp-priority! 'clangd 2))
+
+(after! ccls
+  (setq ccls-initialization-options '(:index (:comments 2) :completion (:detailedLabel t)))
+  (set-lsp-priority! 'ccls 2)) ; optional as ccls is the default in Doom
